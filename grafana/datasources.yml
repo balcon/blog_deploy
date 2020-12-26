@@ -1,0 +1,6 @@
+apiVersion: 1
+
+datasources:
+  - name: blog.example.com
+    type: prometheus
+    url: http://prometheus:9090
