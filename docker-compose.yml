@@ -4,7 +4,7 @@ services:
 
   db:
     container_name: db
-    image: mysql:8.0.22
+    image: mysql:${MYSQL_VERSION}
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: blog_db
@@ -14,7 +14,7 @@ services:
 
   adminer:
     container_name: db_adminer      
-    image: adminer
+    image: adminer:${ADMINER_VERSION}
     restart: unless-stopped
     links:
       - db
@@ -23,7 +23,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    image: wordpress:php7.4
+    image: wordpress:${WORDPRESS_VERSION}
     restart: always
     links:
       - db
@@ -39,7 +39,7 @@ services:
         
   node_exporter:
     container_name: node_exporter
-    image: prom/node-exporter
+    image: prom/node-exporter:${NODEEXPORTER_VERSION}
     restart: unless-stopped
     links:
       - db
@@ -53,7 +53,7 @@ services:
 
   prometheus:
     container_name: prometheus
-    image: prom/prometheus
+    image: prom/prometheus:${PROMETHEUS_VERSION}
     restart: always
     links:
       - node_exporter
@@ -65,7 +65,7 @@ services:
 
   grafana:
     container_name: grafana
-    image: grafana/grafana
+    image: grafana/grafana:${GRAFANA_VERSION}
     restart: unless-stopped
     links:
       - prometheus
