@@ -3,7 +3,7 @@ version: "3"
 services:
 
   db:
-    container_name: db
+    container_name: ${PROJECT_NAME}_db
     image: mysql:${MYSQL_VERSION}
     restart: unless-stopped
     environment:
@@ -13,7 +13,7 @@ services:
       - mysql:/var/lib/mysql
 
   adminer:
-    container_name: db_adminer      
+    container_name: ${PROJECT_NAME}_db_adminer      
     image: adminer:${ADMINER_VERSION}
     restart: unless-stopped
     links:
@@ -22,7 +22,7 @@ services:
       - 8080:8080
 
   wordpress:
-    container_name: wordpress
+    container_name: ${PROJECT_NAME}_wordpress
     image: wordpress:${WORDPRESS_VERSION}
     restart: always
     links:
@@ -38,7 +38,7 @@ services:
       - wordpress:/var/www/html
         
   node_exporter:
-    container_name: node_exporter
+    container_name: ${PROJECT_NAME}_node_exporter
     image: prom/node-exporter:${NODEEXPORTER_VERSION}
     restart: unless-stopped
     links:
@@ -52,7 +52,7 @@ services:
       - '/:/host:ro,rslave'
 
   prometheus:
-    container_name: prometheus
+    container_name: ${PROJECT_NAME}_prometheus
     image: prom/prometheus:${PROMETHEUS_VERSION}
     restart: always
     links:
@@ -64,7 +64,7 @@ services:
       - prometheus:/prometheus
 
   grafana:
-    container_name: grafana
+    container_name: ${PROJECT_NAME}_grafana
     image: grafana/grafana:${GRAFANA_VERSION}
     restart: unless-stopped
     links:
