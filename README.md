@@ -1,5 +1,5 @@
 ## Downlod and deploy
-**Docker-compose**, vers X must be installed on your host system.
+**Docker-compose** must be installed on your host system.
 Copy to clipboard and execute
 ```bash
 wget https://github.com/balcon/blog_deploy/archive/v0.9.tar.gz -O blog.tar.gz
