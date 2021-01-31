@@ -11,4 +11,4 @@ sudo docker-compose up -d
 - http://<host_ip>:8080 - database Adminer
 - http://<host_ip>:3000 - Grafana monitoring (admin/admin by default)
 
-
+***For security, you need to change database username/password***
